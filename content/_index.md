@@ -1,10 +1,10 @@
 +++
-title = "Home Page"
+title = "Rusty Algorithms"
 sort_by = "date"
 insert_anchor_links = "right"
 +++
 
-**Code *fearlessly*. Try out things you don't understand. Have things break and then fix them.**
+**This blog is dedicated to those who are just a *tad* bit rusty in algorithms. Code *fearlessly*. Try out things you don't understand. Have things break and then fix them.**
 
 ## Contents of the blog
 
