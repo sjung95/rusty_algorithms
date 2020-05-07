@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title>Rusty Algorithms</title>
+        <link>https://pythonmath.github.io/rusty_algorithms/</link>
+        <description></description>
+        <generator>Zola</generator>
+        <language>en</language>
+        <atom:link href="https://pythonmath.github.io/rusty_algorithms/tags/array/rss.xml" rel="self" type="application/rss+xml"/>
+        <lastBuildDate>Wed, 06 May 2020 00:00:00 +0000</lastBuildDate>
+        
+            <item>
+                <title>Two Sum</title>
+                <pubDate>Wed, 06 May 2020 00:00:00 +0000</pubDate>
+                <link>https://pythonmath.github.io/rusty_algorithms/algorithms/array/two-sum/</link>
+                <guid>https://pythonmath.github.io/rusty_algorithms/algorithms/array/two-sum/</guid>
+                <description>&lt;h2 id=&quot;to-solve-this-problem&quot;&gt;To solve this problem&lt;a class=&quot;anchor&quot; href=&quot;#to-solve-this-problem&quot;&gt;§&lt;&#x2F;a&gt;&amp;nbsp;&lt;&#x2F;h2&gt;
+&lt;ol&gt;
+&lt;li&gt;Create a hashmap that will map number =&amp;gt; index. Alternatively, map complement =&amp;gt; index.&lt;&#x2F;li&gt;
+&lt;li&gt;Enumerate across the array, checking if the number&#x27;s complement or the number is in the map.
+&lt;ul&gt;
+&lt;li&gt;If so return the current number&#x27;s index and the mapped index.&lt;&#x2F;li&gt;
+&lt;li&gt;Else add the number or complement to the hashmap&lt;&#x2F;li&gt;
+&lt;&#x2F;ul&gt;
+&lt;&#x2F;li&gt;
+&lt;li&gt;Return an empty array if a match was not found.&lt;&#x2F;li&gt;
+&lt;&#x2F;ol&gt;
+&lt;h2 id=&quot;complexity-analysis&quot;&gt;Complexity analysis&lt;a class=&quot;anchor&quot; href=&quot;#complexity-analysis&quot;&gt;§&lt;&#x2F;a&gt;&amp;nbsp;&lt;&#x2F;h2&gt;
+&lt;h3 id=&quot;time-o-n&quot;&gt;Time: O(N)&lt;a class=&quot;anchor&quot; href=&quot;#time-o-n&quot;&gt;§&lt;&#x2F;a&gt;&amp;nbsp;&lt;&#x2F;h3&gt;
+&lt;p&gt;The program does a single pass through the array.&lt;&#x2F;p&gt;
+&lt;h3 id=&quot;space-o-n&quot;&gt;Space: O(N)&lt;a class=&quot;anchor&quot; href=&quot;#space-o-n&quot;&gt;§&lt;&#x2F;a&gt;&amp;nbsp;&lt;&#x2F;h3&gt;
+&lt;p&gt;The program stores a dictionary that in the worst case (no two sum is found) will have a key value pair of every single number and its index.&lt;&#x2F;p&gt;
+&lt;h2 id=&quot;python-solution&quot;&gt;Python solution&lt;a class=&quot;anchor&quot; href=&quot;#python-solution&quot;&gt;§&lt;&#x2F;a&gt;&amp;nbsp;&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#383838;&quot;&gt;
+&lt;span style=&quot;font-style:italic;color:#3bc0f0;&quot;&gt;class &lt;&#x2F;span&gt;&lt;span style=&quot;text-decoration:underline;color:#ffc66d;&quot;&gt;Solution&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;:
+    &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#3bc0f0;&quot;&gt;def &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ffc66d;&quot;&gt;twoSum&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;self&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;nums&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;: List[&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;], &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;target&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;) -&amp;gt; List[&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;]:
+
+        num_to_index &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;{}
+
+        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;i, num &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#da4939;&quot;&gt;enumerate&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(nums):
+            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;target &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;- &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;num &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;in &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;num_to_index:
+                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;[num_to_index[target&lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;num], i]
+            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;else&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;:
+                num_to_index[num] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;i
+
+        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;[]
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;go-solution&quot;&gt;Go solution&lt;a class=&quot;anchor&quot; href=&quot;#go-solution&quot;&gt;§&lt;&#x2F;a&gt;&amp;nbsp;&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#383838;&quot;&gt;
+&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;func &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ffc66d;&quot;&gt;twoSum&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;nums &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;[]&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;target &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;) []&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;{
+
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d0d0ff;&quot;&gt;num_to_index &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;:= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#da4939;&quot;&gt;make&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;map&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;[&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;]&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;)
+
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d0d0ff;&quot;&gt;i&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d0d0ff;&quot;&gt;num &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;:= range&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt; nums {
+        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d0d0ff;&quot;&gt;compliment_index&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;color:#d0d0ff;&quot;&gt;present &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;:=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt; num_to_index[target&lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;num]
+        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;if&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt; present {
+            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;[]&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;{compliment_index, i}
+        } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;else &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;{
+            num_to_index[num] &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt; i
+        }
+    }
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;[]&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;int&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;{}
+}
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;&lt;h2 id=&quot;rust-solution&quot;&gt;Rust solution&lt;a class=&quot;anchor&quot; href=&quot;#rust-solution&quot;&gt;§&lt;&#x2F;a&gt;&amp;nbsp;&lt;&#x2F;h2&gt;
+&lt;pre style=&quot;background-color:#383838;&quot;&gt;
+&lt;span style=&quot;color:#cc7833;&quot;&gt;use &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;std::collections::HashMap;
+
+&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;impl &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;Solution {
+    &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;pub &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;fn &lt;&#x2F;span&gt;&lt;span style=&quot;color:#ffc66d;&quot;&gt;two_sum&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;nums&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;: Vec&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;&amp;gt;, &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#fd971f;&quot;&gt;target&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;: &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;) -&amp;gt; Vec&amp;lt;&lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;&amp;gt; {
+
+        &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;let &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;mut&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt; num_to_index &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;= &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;HashMap::with_capacity(nums.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#da4939;&quot;&gt;len&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;());
+
+        &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;for &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(i, num) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;in&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt; nums.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#da4939;&quot;&gt;iter&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;().&lt;&#x2F;span&gt;&lt;span style=&quot;color:#da4939;&quot;&gt;enumerate&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;() {
+            &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;if &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;let Some&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;complement_index) &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;=&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt; num_to_index.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#da4939;&quot;&gt;get&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(&lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;&amp;amp;&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(target&lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;-&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;num)) {
+                &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;return &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;vec![complement_index &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;, i &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;as &lt;&#x2F;span&gt;&lt;span style=&quot;font-style:italic;color:#6e9cbe;&quot;&gt;i32&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;];
+            } &lt;&#x2F;span&gt;&lt;span style=&quot;color:#cc7833;&quot;&gt;else &lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;{
+                num_to_index.&lt;&#x2F;span&gt;&lt;span style=&quot;color:#da4939;&quot;&gt;insert&lt;&#x2F;span&gt;&lt;span style=&quot;color:#e6e1dc;&quot;&gt;(num, i);
+            }
+        }
+        vec![]
+    }
+}
+&lt;&#x2F;span&gt;&lt;&#x2F;pre&gt;</description>
+            </item>
+        
+    </channel>
+</rss>

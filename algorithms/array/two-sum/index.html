@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+      <title> Rusty Algorithms | Two Sum </title>     
+      <link rel="stylesheet" href="https://pythonmath.github.io/rusty_algorithms/main.css">
+    </head>
+
+    <body>
+      <nav>
+        <div id="subnav">
+          <form class="theme-selector">
+            <button type="button" id="theme-light-button" class="theme-button" onclick="enableTheme('light', true)">&#9706;</button>
+            <button type="button" id="theme-dark-button"  class="theme-button enabled" onclick="enableTheme('dark', true)">&#9705;</button>
+          </form>
+          <a href="https://pythonmath.github.io/rusty_algorithms/search/">&#8981;</a>       
+        </div>
+
+      
+  <ul id="breadcrumbs">
+    
+      
+      <li><a href="https:&#x2F;&#x2F;pythonmath.github.io&#x2F;rusty_algorithms&#x2F;">Rusty Algorithms</a>&nbsp;&#8594;&nbsp;</li> 
+    
+      
+      <li><a href="https:&#x2F;&#x2F;pythonmath.github.io&#x2F;rusty_algorithms&#x2F;algorithms&#x2F;">Algorithms</a>&nbsp;&#8594;&nbsp;</li> 
+    
+      
+      <li><a href="https:&#x2F;&#x2F;pythonmath.github.io&#x2F;rusty_algorithms&#x2F;algorithms&#x2F;array&#x2F;">Array</a>&nbsp;&#8594;&nbsp;</li> 
+    
+  </ul>
+  <h1>Two Sum</h1><em>Array</em> 
+
+      </nav>
+
+      <main>
+      
+  <div id="taxonomies">
+    
+      <date>May 6, 2020</date>
+       
+
+    
+      <ul>
+      
+        <li><a href="https://pythonmath.github.io/rusty_algorithms/authors/raymond-sheng/" >Raymond Sheng</a></li>
+      
+     </ul>
+    
+    
+    
+      <ul>
+      
+        <li><a href="https://pythonmath.github.io/rusty_algorithms/tags/array/" >#Array</a></li>
+      
+      </ul>
+    
+  </div>
+
+  
+  
+    
+    
+  
+    
+    
+      
+      
+    
+      
+      
+    
+  
+    
+    
+  
+    
+    
+  
+    
+    
+  
+
+  
+      <ul id="toc">
+        
+          <li><a href="https://pythonmath.github.io/rusty_algorithms/algorithms/array/two-sum/#to-solve-this-problem">To solve this problem</a>
+          
+        </li>
+  
+          <li><a href="https://pythonmath.github.io/rusty_algorithms/algorithms/array/two-sum/#complexity-analysis">Complexity analysis</a>
+          <ul>        
+            
+            <li><a href="https://pythonmath.github.io/rusty_algorithms/algorithms/array/two-sum/#time-o-n">Time: O(N)</a></li>
+          
+            <li><a href="https://pythonmath.github.io/rusty_algorithms/algorithms/array/two-sum/#space-o-n">Space: O(N)</a></li>
+          
+         </ul>
+  
+        </li>
+  
+          <li><a href="https://pythonmath.github.io/rusty_algorithms/algorithms/array/two-sum/#python-solution">Python solution</a>
+          
+        </li>
+  
+          <li><a href="https://pythonmath.github.io/rusty_algorithms/algorithms/array/two-sum/#go-solution">Go solution</a>
+          
+        </li>
+  
+          <li><a href="https://pythonmath.github.io/rusty_algorithms/algorithms/array/two-sum/#rust-solution">Rust solution</a>
+          
+        </li>
+  
+      </ul>
+  
+
+  <article>
+    <h2 id="to-solve-this-problem">To solve this problem<a class="anchor" href="#to-solve-this-problem">§</a>&nbsp;</h2>
+<ol>
+<li>Create a hashmap that will map number =&gt; index. Alternatively, map complement =&gt; index.</li>
+<li>Enumerate across the array, checking if the number's complement or the number is in the map.
+<ul>
+<li>If so return the current number's index and the mapped index.</li>
+<li>Else add the number or complement to the hashmap</li>
+</ul>
+</li>
+<li>Return an empty array if a match was not found.</li>
+</ol>
+<h2 id="complexity-analysis">Complexity analysis<a class="anchor" href="#complexity-analysis">§</a>&nbsp;</h2>
+<h3 id="time-o-n">Time: O(N)<a class="anchor" href="#time-o-n">§</a>&nbsp;</h3>
+<p>The program does a single pass through the array.</p>
+<h3 id="space-o-n">Space: O(N)<a class="anchor" href="#space-o-n">§</a>&nbsp;</h3>
+<p>The program stores a dictionary that in the worst case (no two sum is found) will have a key value pair of every single number and its index.</p>
+<h2 id="python-solution">Python solution<a class="anchor" href="#python-solution">§</a>&nbsp;</h2>
+<pre style="background-color:#383838;">
+<span style="font-style:italic;color:#3bc0f0;">class </span><span style="text-decoration:underline;color:#ffc66d;">Solution</span><span style="color:#e6e1dc;">:
+    </span><span style="font-style:italic;color:#3bc0f0;">def </span><span style="color:#ffc66d;">twoSum</span><span style="color:#e6e1dc;">(</span><span style="font-style:italic;color:#fd971f;">self</span><span style="color:#e6e1dc;">, </span><span style="font-style:italic;color:#fd971f;">nums</span><span style="color:#e6e1dc;">: List[</span><span style="font-style:italic;color:#6e9cbe;">int</span><span style="color:#e6e1dc;">], </span><span style="font-style:italic;color:#fd971f;">target</span><span style="color:#e6e1dc;">: </span><span style="font-style:italic;color:#6e9cbe;">int</span><span style="color:#e6e1dc;">) -&gt; List[</span><span style="font-style:italic;color:#6e9cbe;">int</span><span style="color:#e6e1dc;">]:
+
+        num_to_index </span><span style="color:#cc7833;">= </span><span style="color:#e6e1dc;">{}
+
+        </span><span style="color:#cc7833;">for </span><span style="color:#e6e1dc;">i, num </span><span style="color:#cc7833;">in </span><span style="color:#da4939;">enumerate</span><span style="color:#e6e1dc;">(nums):
+            </span><span style="color:#cc7833;">if </span><span style="color:#e6e1dc;">target </span><span style="color:#cc7833;">- </span><span style="color:#e6e1dc;">num </span><span style="color:#cc7833;">in </span><span style="color:#e6e1dc;">num_to_index:
+                </span><span style="color:#cc7833;">return </span><span style="color:#e6e1dc;">[num_to_index[target</span><span style="color:#cc7833;">-</span><span style="color:#e6e1dc;">num], i]
+            </span><span style="color:#cc7833;">else</span><span style="color:#e6e1dc;">:
+                num_to_index[num] </span><span style="color:#cc7833;">= </span><span style="color:#e6e1dc;">i
+
+        </span><span style="color:#cc7833;">return </span><span style="color:#e6e1dc;">[]
+</span></pre><h2 id="go-solution">Go solution<a class="anchor" href="#go-solution">§</a>&nbsp;</h2>
+<pre style="background-color:#383838;">
+<span style="font-style:italic;color:#6e9cbe;">func </span><span style="color:#ffc66d;">twoSum</span><span style="color:#e6e1dc;">(</span><span style="font-style:italic;color:#fd971f;">nums </span><span style="color:#e6e1dc;">[]</span><span style="font-style:italic;color:#6e9cbe;">int</span><span style="color:#e6e1dc;">, </span><span style="font-style:italic;color:#fd971f;">target </span><span style="font-style:italic;color:#6e9cbe;">int</span><span style="color:#e6e1dc;">) []</span><span style="font-style:italic;color:#6e9cbe;">int </span><span style="color:#e6e1dc;">{
+
+    </span><span style="color:#d0d0ff;">num_to_index </span><span style="color:#cc7833;">:= </span><span style="color:#da4939;">make</span><span style="color:#e6e1dc;">(</span><span style="font-style:italic;color:#6e9cbe;">map</span><span style="color:#e6e1dc;">[</span><span style="font-style:italic;color:#6e9cbe;">int</span><span style="color:#e6e1dc;">]</span><span style="font-style:italic;color:#6e9cbe;">int</span><span style="color:#e6e1dc;">)
+
+    </span><span style="color:#cc7833;">for </span><span style="color:#d0d0ff;">i</span><span style="color:#e6e1dc;">, </span><span style="color:#d0d0ff;">num </span><span style="color:#cc7833;">:= range</span><span style="color:#e6e1dc;"> nums {
+        </span><span style="color:#d0d0ff;">compliment_index</span><span style="color:#e6e1dc;">, </span><span style="color:#d0d0ff;">present </span><span style="color:#cc7833;">:=</span><span style="color:#e6e1dc;"> num_to_index[target</span><span style="color:#cc7833;">-</span><span style="color:#e6e1dc;">num]
+        </span><span style="color:#cc7833;">if</span><span style="color:#e6e1dc;"> present {
+            </span><span style="color:#cc7833;">return </span><span style="color:#e6e1dc;">[]</span><span style="font-style:italic;color:#6e9cbe;">int</span><span style="color:#e6e1dc;">{compliment_index, i}
+        } </span><span style="color:#cc7833;">else </span><span style="color:#e6e1dc;">{
+            num_to_index[num] </span><span style="color:#cc7833;">=</span><span style="color:#e6e1dc;"> i
+        }
+    }
+    </span><span style="color:#cc7833;">return </span><span style="color:#e6e1dc;">[]</span><span style="font-style:italic;color:#6e9cbe;">int</span><span style="color:#e6e1dc;">{}
+}
+</span></pre><h2 id="rust-solution">Rust solution<a class="anchor" href="#rust-solution">§</a>&nbsp;</h2>
+<pre style="background-color:#383838;">
+<span style="color:#cc7833;">use </span><span style="color:#e6e1dc;">std::collections::HashMap;
+
+</span><span style="font-style:italic;color:#6e9cbe;">impl </span><span style="color:#e6e1dc;">Solution {
+    </span><span style="color:#cc7833;">pub </span><span style="font-style:italic;color:#6e9cbe;">fn </span><span style="color:#ffc66d;">two_sum</span><span style="color:#e6e1dc;">(</span><span style="font-style:italic;color:#fd971f;">nums</span><span style="color:#e6e1dc;">: Vec&lt;</span><span style="font-style:italic;color:#6e9cbe;">i32</span><span style="color:#e6e1dc;">&gt;, </span><span style="font-style:italic;color:#fd971f;">target</span><span style="color:#e6e1dc;">: </span><span style="font-style:italic;color:#6e9cbe;">i32</span><span style="color:#e6e1dc;">) -&gt; Vec&lt;</span><span style="font-style:italic;color:#6e9cbe;">i32</span><span style="color:#e6e1dc;">&gt; {
+
+        </span><span style="font-style:italic;color:#6e9cbe;">let </span><span style="color:#cc7833;">mut</span><span style="color:#e6e1dc;"> num_to_index </span><span style="color:#cc7833;">= </span><span style="color:#e6e1dc;">HashMap::with_capacity(nums.</span><span style="color:#da4939;">len</span><span style="color:#e6e1dc;">());
+
+        </span><span style="color:#cc7833;">for </span><span style="color:#e6e1dc;">(i, num) </span><span style="color:#cc7833;">in</span><span style="color:#e6e1dc;"> nums.</span><span style="color:#da4939;">iter</span><span style="color:#e6e1dc;">().</span><span style="color:#da4939;">enumerate</span><span style="color:#e6e1dc;">() {
+            </span><span style="color:#cc7833;">if </span><span style="font-style:italic;color:#6e9cbe;">let Some</span><span style="color:#e6e1dc;">(</span><span style="color:#cc7833;">&amp;</span><span style="color:#e6e1dc;">complement_index) </span><span style="color:#cc7833;">=</span><span style="color:#e6e1dc;"> num_to_index.</span><span style="color:#da4939;">get</span><span style="color:#e6e1dc;">(</span><span style="color:#cc7833;">&amp;</span><span style="color:#e6e1dc;">(target</span><span style="color:#cc7833;">-</span><span style="color:#e6e1dc;">num)) {
+                </span><span style="color:#cc7833;">return </span><span style="color:#e6e1dc;">vec![complement_index </span><span style="color:#cc7833;">as </span><span style="font-style:italic;color:#6e9cbe;">i32</span><span style="color:#e6e1dc;">, i </span><span style="color:#cc7833;">as </span><span style="font-style:italic;color:#6e9cbe;">i32</span><span style="color:#e6e1dc;">];
+            } </span><span style="color:#cc7833;">else </span><span style="color:#e6e1dc;">{
+                num_to_index.</span><span style="color:#da4939;">insert</span><span style="color:#e6e1dc;">(num, i);
+            }
+        }
+        vec![]
+    }
+}
+</span></pre>
+  </article>
+
+      </main>
+
+      <script type="text/javascript" src="https://pythonmath.github.io/rusty_algorithms/themes.js"></script>
+
+      <script>
+        function burger() {
+          var x = document.getElementById("bger");
+          if (x.style.display === "block") {
+            x.style.display = "none";
+          } else {
+            x.style.display = "block";
+          }
+        }
+        </script>
+    </body>
+</html>
