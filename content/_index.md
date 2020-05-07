@@ -10,7 +10,7 @@ insert_anchor_links = "right"
 
 Rusty Algorithms publishes content following two concurrent threads that run in parallel.
 
-### Thread 1: Algorithms
+### Thread 1: Algorithms and Data Structures
 
 This blog hosts solutions to algorithm and data structure questions in Python, Go, and Rust.
 
