@@ -21,7 +21,7 @@
     {% if page.taxonomies.authors %}
       <ul>
       {% for author in page.taxonomies.authors %}
-        <li><a href="{{ get_taxonomy_url(kind="authors", name=author) | safe }}" >{{ author }}</a></li>
+        <li><a href="authors/">{{ author }}</a></li>
       {% endfor %}
      </ul>
     {% endif %}
@@ -29,7 +29,7 @@
     {% if page.taxonomies.tags %}
       <ul>
       {% for tag in page.taxonomies.tags %}
-        <li><a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}" >#{{ tag }}</a></li>
+        <li><a href="tags/">#{{ tag }}</a></li>
       {% endfor %}
       </ul>
     {% endif %}

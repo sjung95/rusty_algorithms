@@ -1,6 +1,5 @@
 +++
 title = "Algorithms"
-description = "Solutions in Python, Go, and Rust"
 insert_anchor_links = "right"
 +++
 

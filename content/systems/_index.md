@@ -1,6 +1,5 @@
 +++
 title = "Systems"
-description = "Programming Review"
 insert_anchor_links = "right"
 +++
 

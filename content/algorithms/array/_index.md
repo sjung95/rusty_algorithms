@@ -1,9 +1,10 @@
 +++
 title = "Array"
 sort_by = "date"
-description = "Core Algorithms Questions"
 insert_anchor_links = "right"
 +++
+
+[Tech Interview Handbook Section: Array](https://yangshun.github.io/tech-interview-handbook/algorithms/array)
 
 - Two Sum - <https://leetcode.com/problems/two-sum/>
 - Best Time to Buy and Sell Stock - <https://leetcode.com/problems/best-time-to-buy-and-sell-stock/>
@@ -15,5 +16,3 @@ insert_anchor_links = "right"
 - Search in Rotated Sorted Array - <https://leetcode.com/problems/search-in-rotated-sorted-array/>
 - 3Sum - <https://leetcode.com/problems/3sum/>
 - Container With Most Water - <https://leetcode.com/problems/container-with-most-water/>
-
-[Tech Interview Handbook Section: Array](https://yangshun.github.io/tech-interview-handbook/algorithms/array)
