@@ -1,0 +1,11 @@
+base_url = "https://pythonmath.github.io/rusty_algorithms/"
+compile_sass = true
+title = "Rusty Algorithms"
+highlight_code = true
+highlight_theme = "kronuz"
+build_search_index = true
+
+taxonomies = [
+    {name = "tags", rss = true},
+    {name = "authors", rss = true},
+]
